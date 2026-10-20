@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="tab_search" />
+    <item type="id" name="tab_recents" />
+    <item type="id" name="tab_shield" />
+    <item type="id" name="tab_community" />
+    <item type="id" name="lookup_result" />
+    <item type="id" name="lookup_query" />
+</resources>

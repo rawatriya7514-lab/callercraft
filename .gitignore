@@ -3,3 +3,5 @@ __pycache__/
 apk_build/
 *.tmp
 node_modules/
+ref/*.apk
+ref/truecaller-rea-snapshot

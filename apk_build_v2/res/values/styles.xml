@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:Theme.Material">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowBackground">@color/cc_bg</item>
+        <item name="android:colorPrimary">@color/cc_accent</item>
+        <item name="android:colorPrimaryDark">@color/cc_bg</item>
+        <item name="android:colorAccent">@color/cc_accent</item>
+        <item name="android:statusBarColor">@color/cc_bg</item>
+        <item name="android:navigationBarColor">@color/cc_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

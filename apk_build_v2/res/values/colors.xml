@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cc_bg">#090D16</color>
+    <color name="cc_card">#121826</color>
+    <color name="cc_card_stroke">#1E2837</color>
+    <color name="cc_text">#F4F6FB</color>
+    <color name="cc_text_sub">#94A3B8</color>
+    <color name="cc_accent">#3B82F6</color>
+    <color name="cc_accent_deep">#2563EB</color>
+    <color name="cc_spam">#EF4444</color>
+    <color name="cc_safe">#10B981</color>
+    <color name="cc_warn">#F59E0B</color>
+    <color name="cc_chip_bk">#15202B</color>
+</resources>
