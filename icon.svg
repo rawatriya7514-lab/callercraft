@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D6EFD"/>
+      <stop offset="50%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#E2E8F0" stop-opacity="0.85"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <!-- Background Rounded Rect -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)"/>
+  
+  <!-- Outer Glow Ring -->
+  <circle cx="256" cy="256" r="190" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-opacity="0.2"/>
+  <circle cx="256" cy="256" r="215" fill="none" stroke="#60A5FA" stroke-width="2" stroke-dasharray="12 12" stroke-opacity="0.4"/>
+  
+  <!-- Shield Shape -->
+  <path d="M256 90 L380 135 C380 270 256 385 256 425 C256 385 132 270 132 135 Z" 
+        fill="url(#shieldGrad)" filter="url(#shadow)"/>
+  
+  <!-- Inner Phone Receiver -->
+  <path d="M305 290 C290 315 250 330 205 285 C160 240 175 200 200 185 L220 205 L205 225 C200 230 200 240 215 255 C230 270 240 270 245 265 L265 250 Z" 
+        fill="#0D6EFD"/>
+        
+  <!-- Golden Crown / Star Badge -->
+  <circle cx="256" cy="180" r="18" fill="#F59E0B"/>
+  <path d="M256 168 L260 178 L270 179 L262 186 L265 196 L256 190 L247 196 L250 186 L242 179 L252 178 Z" fill="#FFFFFF"/>
+</svg>
