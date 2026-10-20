@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CraftCaller</string>
+    <string name="notif_caller_channel">Caller ID alerts</string>
+    <string name="notif_sms_channel">Smart SMS</string>
+    <string name="notif_sync_channel">Community sync</string>
+    <string name="notif_callrec_channel">Call recording</string>
+</resources>

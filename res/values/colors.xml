@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Truecaller-inspired blue/white brand -->
+    <color name="tc_blue">#0087FF</color>
+    <color name="tc_blue_dark">#0069E0</color>
+    <color name="tc_blue_deeper">#0A4D8C</color>
+    <color name="bg_white">#FFFFFF</color>
+    <color name="splash_bg">#0B84FE</color>
+    <color name="spam_red">#E53935</color>
+</resources>
