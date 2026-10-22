@@ -1030,6 +1030,61 @@ SCRIPTS_PART3_JS = '''
       }
     });
 
+    
+    // ==========================================
+    // 15. ADMOB MONETIZATION & REWARDED ADS
+    // ==========================================
+    function isNativeAdMobAvailable() {
+      return typeof window.CraftCallerAdBridge !== "undefined";
+    }
+
+    function triggerAdMobInterstitial() {
+      if (isNativeAdMobAvailable() && window.CraftCallerAdBridge.showInterstitial) {
+        try {
+          window.CraftCallerAdBridge.showInterstitial();
+        } catch (e) {
+          console.log("AdMob interstitial bridge error:", e);
+        }
+      }
+    }
+
+    function triggerAdMobRewarded(rewardType) {
+      rewardType = rewardType || "gold_vip";
+      if (isNativeAdMobAvailable() && window.CraftCallerAdBridge.showRewardedAd) {
+        try {
+          showToast("Opening Google AdMob Rewarded Video...", "info");
+          window.CraftCallerAdBridge.showRewardedAd(rewardType);
+        } catch (e) {
+          simulateWebRewardedAd(rewardType);
+        }
+      } else {
+        simulateWebRewardedAd(rewardType);
+      }
+    }
+
+    function simulateWebRewardedAd(rewardType) {
+      showToast("Loading Google AdMob Rewarded Video (5s)...", "info");
+      setTimeout(() => {
+        window.onCraftCallerRewardEarned(rewardType);
+      }, 4500);
+    }
+
+    window.onCraftCallerRewardEarned = function(rewardType) {
+      showToast("🎉 Ad Complete! CraftCaller Gold VIP Unlocked!", "gold");
+      playConnectedChime();
+      try {
+        localStorage.setItem("craftcaller_gold_vip", "true");
+      } catch(e) {}
+    };
+
+    const rewardedBtn = document.getElementById("admob-watch-rewarded-btn");
+    if (rewardedBtn) {
+      rewardedBtn.addEventListener("click", () => {
+        triggerAdMobRewarded("gold_vip");
+      });
+    }
+
+
     // ==========================================
     // 14. APPLICATION INITIALIZATION
     // ==========================================
