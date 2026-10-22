@@ -440,7 +440,7 @@ SCRIPTS_PART1_JS = '''
 
     let db = [];
     try {
-      const stored = localStorage.getItem('craftcaller_db');
+      const stored = localStorage.getItem('callercraft_db');
       db = stored ? JSON.parse(stored) : DEFAULT_DATABASE;
     } catch (e) {
       db = DEFAULT_DATABASE;
@@ -448,7 +448,7 @@ SCRIPTS_PART1_JS = '''
 
     function saveDB() {
       try {
-        localStorage.setItem('craftcaller_db', JSON.stringify(db));
+        localStorage.setItem('callercraft_db', JSON.stringify(db));
       } catch (e) {}
     }
 
@@ -507,13 +507,13 @@ SCRIPTS_PART1_JS = '''
     ];
 
     try {
-      const storedLogs = localStorage.getItem('craftcaller_logs');
+      const storedLogs = localStorage.getItem('callercraft_logs');
       if (storedLogs) callLogs = JSON.parse(storedLogs);
     } catch (e) {}
 
     function saveLogs() {
       try {
-        localStorage.setItem('craftcaller_logs', JSON.stringify(callLogs));
+        localStorage.setItem('callercraft_logs', JSON.stringify(callLogs));
       } catch (e) {}
     }
 
@@ -595,7 +595,7 @@ SCRIPTS_PART1_JS = '''
 
     let messages = [];
     try {
-      const storedMsgs = localStorage.getItem('craftcaller_messages');
+      const storedMsgs = localStorage.getItem('callercraft_messages');
       messages = storedMsgs ? JSON.parse(storedMsgs) : DEFAULT_MESSAGES;
     } catch (e) {
       messages = DEFAULT_MESSAGES;
@@ -603,7 +603,7 @@ SCRIPTS_PART1_JS = '''
 
     function saveMessages() {
       try {
-        localStorage.setItem('craftcaller_messages', JSON.stringify(messages));
+        localStorage.setItem('callercraft_messages', JSON.stringify(messages));
       } catch (e) {}
     }
 
@@ -617,13 +617,13 @@ SCRIPTS_PART1_JS = '''
     ];
 
     try {
-      const storedBlocklist = localStorage.getItem('craftcaller_blocklist');
+      const storedBlocklist = localStorage.getItem('callercraft_blocklist');
       if (storedBlocklist) customBlocklist = JSON.parse(storedBlocklist);
     } catch (e) {}
 
     function saveBlocklist() {
       try {
-        localStorage.setItem('craftcaller_blocklist', JSON.stringify(customBlocklist));
+        localStorage.setItem('callercraft_blocklist', JSON.stringify(customBlocklist));
       } catch (e) {}
     }
 '''

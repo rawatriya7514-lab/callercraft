@@ -1,8 +1,8 @@
-# CraftCaller 📞
+# CallerCraft 📞
 
 **A Truecaller-style caller-ID, spam-defence and smart-SMS app for Android — Kotlin · Jetpack Compose · MVVM · Firestore/Retrofit.**
 
-Package: `com.craftcaller.app` · minSdk 26 (Android 8.0) · targetSdk 35 (Android 15)
+Package: `com.callercraft.app` · minSdk 26 (Android 8.0) · targetSdk 35 (Android 15)
 
 ---
 
@@ -24,10 +24,10 @@ Package: `com.craftcaller.app` · minSdk 26 (Android 8.0) · targetSdk 35 (Andro
 
 ```bash
 ./scripts/resolve_deps.py scripts/deps.txt   # fetches the full Compose/UI stack once
-./build.sh                                    # outputs build/artifacts/CraftCaller.apk
+./build.sh                                    # outputs build/artifacts/CallerCraft.apk
 ```
 
-Produces a **v1+v2+v3 signed release APK** (keystore `keystore/craftcaller-release.keystore`,
+Produces a **v1+v2+v3 signed release APK** (keystore `keystore/callercraft-release.keystore`,
 auto-created on first run).
 
 ### Honesty note on “Room”
@@ -54,7 +54,7 @@ tables). Swapping in real Room later is a drop-in: replace `Db` calls with `@Dao
    - `users`   → `{ number, name, city }` — caller-ID directory
    - `reports` → `{ number, count, reason }` — spam reports
 
-Without the file, CraftCaller runs entirely in **offline demo community** mode (same
+Without the file, CallerCraft runs entirely in **offline demo community** mode (same
 screens, seeded numbers) — perfect for testing before you claim your Firebase quota.
 
 ## Manifest highlights

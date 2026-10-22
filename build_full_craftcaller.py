@@ -2,7 +2,7 @@ import os
 import sys
 import json
 
-print("Starting full CraftCaller build...")
+print("Starting full CallerCraft build...")
 
 # -------------------------------------------------------------
 # 1. HEADER & TOP BAR
@@ -25,7 +25,7 @@ HEADER_HTML = '''
         </div>
         <div>
           <div class="flex items-center gap-1.5">
-            <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-cc-blue via-blue-500 to-indigo-500 bg-clip-text text-transparent">CraftCaller</span>
+            <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-cc-blue via-blue-500 to-indigo-500 bg-clip-text text-transparent">CallerCraft</span>
             <span class="text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-sm">AI SHIELD</span>
           </div>
           <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium hidden sm:block">Intelligent Caller ID & Cyber Spam Defense</p>

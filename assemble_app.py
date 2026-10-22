@@ -2,11 +2,11 @@ import os
 import shutil
 import json
 
-print("Assembling CraftCaller Application...")
+print("Assembling CallerCraft Application...")
 
 # Import modules
 from generate_app import HEAD_CONTENT
-from build_full_craftcaller import HEADER_HTML
+from build_full_callercraft import HEADER_HTML
 from sections_html import TAB_SEARCH_HTML, TAB_CALLS_HTML
 from sections_html_part2 import TAB_MESSAGES_HTML, TAB_SPAM_HTML, TAB_CONTACTS_HTML
 from sections_html_part3 import TAB_ASSISTANT_HTML, TAB_SIMULATOR_HTML, TAB_ANALYTICS_HTML
@@ -32,20 +32,20 @@ full_html = (
     SCRIPTS_PART3_JS
 )
 
-# 1. Save to ~/craftcaller/index.html
-dest_local = "/data/data/com.termux/files/home/craftcaller/index.html"
+# 1. Save to ~/callercraft/index.html
+dest_local = "/data/data/com.termux/files/home/callercraft/index.html"
 with open(dest_local, "w", encoding="utf-8") as f:
     f.write(full_html)
 print(f"Generated {dest_local} ({len(full_html)} chars, {len(full_html.splitlines())} lines)")
 
-# 2. Save to /storage/emulated/0/Download/CraftCaller - Smart Caller ID, AI Spam Blocker & Phone Lookup.html
-dest_dl_1 = "/storage/emulated/0/Download/CraftCaller - Smart Caller ID, AI Spam Blocker & Phone Lookup.html"
+# 2. Save to /storage/emulated/0/Download/CallerCraft - Smart Caller ID, AI Spam Blocker & Phone Lookup.html
+dest_dl_1 = "/storage/emulated/0/Download/CallerCraft - Smart Caller ID, AI Spam Blocker & Phone Lookup.html"
 with open(dest_dl_1, "w", encoding="utf-8") as f:
     f.write(full_html)
 print(f"Generated {dest_dl_1}")
 
-# 3. Save to /storage/emulated/0/Download/craftcaller.html
-dest_dl_2 = "/storage/emulated/0/Download/craftcaller.html"
+# 3. Save to /storage/emulated/0/Download/callercraft.html
+dest_dl_2 = "/storage/emulated/0/Download/callercraft.html"
 with open(dest_dl_2, "w", encoding="utf-8") as f:
     f.write(full_html)
 print(f"Generated {dest_dl_2}")
@@ -59,8 +59,8 @@ print(f"Updated original file {dest_dl_orig}")
 # 5. Create PWA manifest.json
 import json
 manifest_json = {
-    "name": "CraftCaller - Smart Caller ID & AI Spam Shield",
-    "short_name": "CraftCaller",
+    "name": "CallerCraft - Smart Caller ID & AI Spam Shield",
+    "short_name": "CallerCraft",
     "description": "Intelligent Caller ID, AI Spam Defense, Call Recorder, Smart SMS & Phonebook",
     "start_url": "index.html",
     "display": "standalone",
@@ -83,13 +83,13 @@ manifest_json = {
     ]
 }
 
-manifest_path = "/data/data/com.termux/files/home/craftcaller/manifest.json"
+manifest_path = "/data/data/com.termux/files/home/callercraft/manifest.json"
 with open(manifest_path, "w", encoding="utf-8") as f:
     json.dump(manifest_json, f, indent=2)
 print(f"Generated {manifest_path}")
 
 # 6. Create Service Worker sw.js for offline usage
-sw_content = '''const CACHE_NAME = 'craftcaller-v2';
+sw_content = '''const CACHE_NAME = 'callercraft-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -128,7 +128,7 @@ self.addEventListener('fetch', (e) => {
   );
 });
 '''
-sw_path = "/data/data/com.termux/files/home/craftcaller/sw.js"
+sw_path = "/data/data/com.termux/files/home/callercraft/sw.js"
 with open(sw_path, "w", encoding="utf-8") as f:
     f.write(sw_content)
 print(f"Generated {sw_path}")
@@ -168,11 +168,11 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 CraftCaller Web Server running at: http://localhost:${PORT}`);
+  console.log(`🚀 CallerCraft Web Server running at: http://localhost:${PORT}`);
   console.log(`📱 Access on Android Browser: http://localhost:${PORT} or open index.html directly!`);
 });
 '''
-server_path = "/data/data/com.termux/files/home/craftcaller/server.js"
+server_path = "/data/data/com.termux/files/home/callercraft/server.js"
 with open(server_path, "w", encoding="utf-8") as f:
     f.write(server_content)
 print(f"Generated {server_path}")

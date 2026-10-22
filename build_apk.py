@@ -6,12 +6,12 @@ import shutil
 import glob
 
 print("========================================================")
-print("  CraftCaller — Production APK with Google AdMob")
+print("  CallerCraft — Production APK with Google AdMob")
 print("========================================================")
 
-BASE_DIR = "/data/data/com.termux/files/home/craftcaller"
+BASE_DIR = "/data/data/com.termux/files/home/callercraft"
 BUILD_DIR = os.path.join(BASE_DIR, "apk_build")
-SRC_DIR = os.path.join(BUILD_DIR, "src", "com", "craftcaller", "app")
+SRC_DIR = os.path.join(BUILD_DIR, "src", "com", "callercraft", "app")
 RES_DIR = os.path.join(BUILD_DIR, "res")
 ASSETS_DIR = os.path.join(BUILD_DIR, "assets")
 BIN_DIR = os.path.join(BUILD_DIR, "bin")
@@ -25,7 +25,7 @@ shutil.copyfile(os.path.join(BASE_DIR, "index.html"), os.path.join(ASSETS_DIR, "
 # 1. AndroidManifest.xml with AdMob metadata
 manifest_content = '''<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.craftcaller.app"
+    package="com.callercraft.app"
     android:versionCode="2"
     android:versionName="1.1.0">
 
@@ -71,7 +71,7 @@ with open(os.path.join(BUILD_DIR, "AndroidManifest.xml"), "w") as f:
 # 2. res/values/strings.xml
 strings_content = '''<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CraftCaller</string>
+    <string name="app_name">CallerCraft</string>
 </resources>
 '''
 with open(os.path.join(RES_DIR, "values", "strings.xml"), "w") as f:
@@ -113,7 +113,7 @@ with open(os.path.join(RES_DIR, "drawable", "ic_launcher.xml"), "w") as f:
     f.write(icon_content)
 
 # 5. MainActivity.java with Google AdMob & JavaScript Bridge
-activity_content = '''package com.craftcaller.app;
+activity_content = '''package com.callercraft.app;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -152,7 +152,7 @@ import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.OnUserEarnedRewardListener;
 
 public class MainActivity extends Activity {
-    private static final String TAG = "CraftCallerAdMob";
+    private static final String TAG = "CallerCraftAdMob";
     private WebView webView;
     private FrameLayout bannerContainer;
     private AdView adView;
@@ -229,7 +229,7 @@ public class MainActivity extends Activity {
         webView.setBackgroundColor(Color.parseColor("#090D16"));
 
         // Register AdMob JavaScript Interface
-        webView.addJavascriptInterface(new CraftCallerAdBridge(), "CraftCallerAdBridge");
+        webView.addJavascriptInterface(new CallerCraftAdBridge(), "CallerCraftAdBridge");
 
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
@@ -369,7 +369,7 @@ public class MainActivity extends Activity {
     }
 
     // JavaScript Interface Bridge
-    public class CraftCallerAdBridge {
+    public class CallerCraftAdBridge {
         @JavascriptInterface
         public boolean isNativeAdMob() {
             return true;
@@ -427,7 +427,7 @@ public class MainActivity extends Activity {
                         public void onUserEarnedReward(RewardItem rewardItem) {
                             Log.i(TAG, "User earned AdMob reward: " + rewardItem.getAmount() + " " + rewardItem.getType());
                             mainHandler.post(() -> {
-                                webView.evaluateJavascript("window.onCraftCallerRewardEarned('" + rewardType + "');", null);
+                                webView.evaluateJavascript("window.onCallerCraftRewardEarned('" + rewardType + "');", null);
                             });
                         }
                     });
@@ -435,7 +435,7 @@ public class MainActivity extends Activity {
                     loadRewardedAd();
                     // Fallback to simulated reward if ad unit is still loading
                     mainHandler.post(() -> {
-                        webView.evaluateJavascript("window.onCraftCallerRewardEarned('" + rewardType + "');", null);
+                        webView.evaluateJavascript("window.onCallerCraftRewardEarned('" + rewardType + "');", null);
                     });
                 }
             });
@@ -499,7 +499,7 @@ subprocess.check_call(cmd_aapt_link, shell=True)
 cmd_javac = (
     f"javac -cp \"{cp_javac}\" "
     f"-d {BIN_DIR}/classes "
-    f"{SRC_DIR}/MainActivity.java {BUILD_DIR}/src/com/craftcaller/app/R.java"
+    f"{SRC_DIR}/MainActivity.java {BUILD_DIR}/src/com/callercraft/app/R.java"
 )
 os.makedirs(f"{BIN_DIR}/classes", exist_ok=True)
 print("[3/5] Compiling Java sources with AdMob SDK...")
@@ -511,7 +511,7 @@ cmd_d8 = (
     f"d8 --lib \"{ANDROID_JAR}\" "
     f"--min-api 24 "
     f"--output \"{BIN_DIR}\" "
-    f"{BIN_DIR}/classes/com/craftcaller/app/*.class "
+    f"{BIN_DIR}/classes/com/callercraft/app/*.class "
     f"{admob_jars_args}"
 )
 print("[4/5] Building classes.dex with d8 (integrating Google Mobile Ads)...")
@@ -519,14 +519,14 @@ subprocess.check_call(cmd_d8, shell=True)
 
 # Step 5: Pack & Sign APK
 print("[5/5] Packaging and signing production APK...")
-unsigned_apk = f"{BIN_DIR}/CraftCaller-unsigned.apk"
+unsigned_apk = f"{BIN_DIR}/CallerCraft-unsigned.apk"
 shutil.copyfile(f"{BIN_DIR}/app-base.apk", unsigned_apk)
 
 with zipfile.ZipFile(unsigned_apk, 'a') as apk:
     apk.write(f"{BIN_DIR}/classes.dex", "classes.dex")
     apk.write(f"{ASSETS_DIR}/index.html", "assets/index.html")
 
-signed_apk = f"{BASE_DIR}/CraftCaller.apk"
+signed_apk = f"{BASE_DIR}/CallerCraft.apk"
 cmd_sign = (
     f"apksigner sign --ks {KEYSTORE} "
     f"--ks-key-alias artraw "
@@ -541,13 +541,13 @@ subprocess.check_call(cmd_sign, shell=True)
 cmd_verify = f"apksigner verify -v {signed_apk}"
 subprocess.check_call(cmd_verify, shell=True)
 
-# Copy to /storage/emulated/0/Download/CraftCaller.apk
-dest_dl_apk = "/storage/emulated/0/Download/CraftCaller.apk"
+# Copy to /storage/emulated/0/Download/CallerCraft.apk
+dest_dl_apk = "/storage/emulated/0/Download/CallerCraft.apk"
 shutil.copyfile(signed_apk, dest_dl_apk)
 
 apk_size = os.path.getsize(signed_apk)
 print("========================================================")
-print(f"🎉 Production CraftCaller.apk successfully built & signed!")
+print(f"🎉 Production CallerCraft.apk successfully built & signed!")
 print(f"📦 APK Size: {apk_size / 1024:.2f} KB ({apk_size} bytes)")
 print(f"💰 Google AdMob Integrated: App ID ca-app-pub-7925407604309207~4393395283")
 print(f"📱 Saved to: {dest_dl_apk}")

@@ -12,11 +12,11 @@ MODALS_HTML = '''
   <div id="incoming-call-modal" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 transition-all duration-300">
     <div id="incoming-call-card" class="relative w-full max-w-sm rounded-[36px] overflow-hidden shadow-2xl transition-all transform scale-95 duration-300 border-4 border-slate-800 bg-slate-900 text-white">
       
-      <!-- Top CraftCaller Brand Header -->
+      <!-- Top CallerCraft Brand Header -->
       <div class="pt-5 px-6 pb-2 flex items-center justify-between text-xs text-slate-400 border-b border-white/10">
         <div class="flex items-center gap-1.5">
           <span class="w-2.5 h-2.5 rounded-full bg-cc-blue animate-pulse"></span>
-          <span class="font-extrabold tracking-wide text-white">CraftCaller</span>
+          <span class="font-extrabold tracking-wide text-white">CallerCraft</span>
           <span class="text-[9px] px-1.5 py-0.2 rounded bg-blue-500/20 text-blue-300 font-bold">SMART ID</span>
         </div>
         <div class="flex items-center gap-2">
@@ -348,7 +348,7 @@ MODALS_HTML = '''
         <div class="flex items-center gap-2 pt-1">
           <input type="checkbox" id="contact-input-gold" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-400">
           <label for="contact-input-gold" class="text-xs font-bold text-slate-700 dark:text-slate-300 cursor-pointer">
-            Mark as CraftCaller Gold VIP Member ⭐
+            Mark as CallerCraft Gold VIP Member ⭐
           </label>
         </div>
       </div>

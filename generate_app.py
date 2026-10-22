@@ -2,7 +2,7 @@ import os
 import sys
 import json
 
-print("Crafting CraftCaller Application...")
+print("Crafting CallerCraft Application...")
 
 # -------------------------------------------------------------
 # Part 1: HTML Header, Styles & Tailwind Configuration
@@ -12,13 +12,13 @@ HEAD_CONTENT = '''<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>CraftCaller - Smart Caller ID, AI Spam Shield & Phone Intelligence</title>
+  <title>CallerCraft - Smart Caller ID, AI Spam Shield & Phone Intelligence</title>
   
   <!-- Web App Metadata & Favicon -->
   <meta name="theme-color" content="#0D6EFD">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="CraftCaller">
+  <meta name="apple-mobile-web-app-title" content="CallerCraft">
   <link rel="manifest" href="manifest.json">
   
   <!-- Fonts & Tailwind CSS CDN -->

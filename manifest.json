@@ -1,6 +1,6 @@
 {
-  "name": "CraftCaller - Smart Caller ID & AI Spam Shield",
-  "short_name": "CraftCaller",
+  "name": "CallerCraft - Smart Caller ID & AI Spam Shield",
+  "short_name": "CallerCraft",
   "description": "Intelligent Caller ID, AI Spam Defense, Call Recorder, Smart SMS & Phonebook",
   "start_url": "index.html",
   "display": "standalone",

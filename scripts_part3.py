@@ -650,7 +650,7 @@ SCRIPTS_PART3_JS = '''
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `craftcaller_contacts_${Date.now()}.vcf`;
+      a.download = `callercraft_contacts_${Date.now()}.vcf`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -752,11 +752,11 @@ SCRIPTS_PART3_JS = '''
 
       let promptText = '';
       if (assistantPersona === 'strict') {
-        promptText = 'Warning: This call is recorded by CraftCaller AI. State your registered business credentials and purpose.';
+        promptText = 'Warning: This call is recorded by CallerCraft AI. State your registered business credentials and purpose.';
       } else if (assistantPersona === 'friendly') {
-        promptText = 'Hi! The recipient is away right now. I am CraftCaller Assistant. How may I help you?';
+        promptText = 'Hi! The recipient is away right now. I am CallerCraft Assistant. How may I help you?';
       } else {
-        promptText = 'Hello. I am CraftCaller AI Assistant. Who is calling and what is this regarding?';
+        promptText = 'Hello. I am CallerCraft AI Assistant. Who is calling and what is this regarding?';
       }
 
       box.innerHTML = `
@@ -963,7 +963,7 @@ SCRIPTS_PART3_JS = '''
     // ==========================================
     document.getElementById('export-full-backup-btn').addEventListener('click', () => {
       const backupData = {
-        app: 'CraftCaller',
+        app: 'CallerCraft',
         version: '2.0',
         exportedAt: new Date().toISOString(),
         database: db,
@@ -976,7 +976,7 @@ SCRIPTS_PART3_JS = '''
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `craftcaller_backup_${Date.now()}.json`;
+      a.download = `callercraft_backup_${Date.now()}.json`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -1002,7 +1002,7 @@ SCRIPTS_PART3_JS = '''
           renderMessages();
           renderBlocklist();
           renderContacts();
-          showToast('CraftCaller data successfully restored from backup!', 'success');
+          showToast('CallerCraft data successfully restored from backup!', 'success');
         } catch (err) {
           showToast('Invalid backup JSON file', 'error');
         }
@@ -1011,11 +1011,11 @@ SCRIPTS_PART3_JS = '''
     });
 
     document.getElementById('reset-factory-db-btn').addEventListener('click', () => {
-      if (confirm('Reset CraftCaller to initial factory settings and database?')) {
-        localStorage.removeItem('craftcaller_db');
-        localStorage.removeItem('craftcaller_logs');
-        localStorage.removeItem('craftcaller_messages');
-        localStorage.removeItem('craftcaller_blocklist');
+      if (confirm('Reset CallerCraft to initial factory settings and database?')) {
+        localStorage.removeItem('callercraft_db');
+        localStorage.removeItem('callercraft_logs');
+        localStorage.removeItem('callercraft_messages');
+        localStorage.removeItem('callercraft_blocklist');
         location.reload();
       }
     });
@@ -1035,13 +1035,13 @@ SCRIPTS_PART3_JS = '''
     // 15. ADMOB MONETIZATION & REWARDED ADS
     // ==========================================
     function isNativeAdMobAvailable() {
-      return typeof window.CraftCallerAdBridge !== "undefined";
+      return typeof window.CallerCraftAdBridge !== "undefined";
     }
 
     function triggerAdMobInterstitial() {
-      if (isNativeAdMobAvailable() && window.CraftCallerAdBridge.showInterstitial) {
+      if (isNativeAdMobAvailable() && window.CallerCraftAdBridge.showInterstitial) {
         try {
-          window.CraftCallerAdBridge.showInterstitial();
+          window.CallerCraftAdBridge.showInterstitial();
         } catch (e) {
           console.log("AdMob interstitial bridge error:", e);
         }
@@ -1050,10 +1050,10 @@ SCRIPTS_PART3_JS = '''
 
     function triggerAdMobRewarded(rewardType) {
       rewardType = rewardType || "gold_vip";
-      if (isNativeAdMobAvailable() && window.CraftCallerAdBridge.showRewardedAd) {
+      if (isNativeAdMobAvailable() && window.CallerCraftAdBridge.showRewardedAd) {
         try {
           showToast("Opening Google AdMob Rewarded Video...", "info");
-          window.CraftCallerAdBridge.showRewardedAd(rewardType);
+          window.CallerCraftAdBridge.showRewardedAd(rewardType);
         } catch (e) {
           simulateWebRewardedAd(rewardType);
         }
@@ -1065,15 +1065,15 @@ SCRIPTS_PART3_JS = '''
     function simulateWebRewardedAd(rewardType) {
       showToast("Loading Google AdMob Rewarded Video (5s)...", "info");
       setTimeout(() => {
-        window.onCraftCallerRewardEarned(rewardType);
+        window.onCallerCraftRewardEarned(rewardType);
       }, 4500);
     }
 
-    window.onCraftCallerRewardEarned = function(rewardType) {
-      showToast("🎉 Ad Complete! CraftCaller Gold VIP Unlocked!", "gold");
+    window.onCallerCraftRewardEarned = function(rewardType) {
+      showToast("🎉 Ad Complete! CallerCraft Gold VIP Unlocked!", "gold");
       playConnectedChime();
       try {
-        localStorage.setItem("craftcaller_gold_vip", "true");
+        localStorage.setItem("callercraft_gold_vip", "true");
       } catch(e) {}
     };
 

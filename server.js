@@ -32,6 +32,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 CraftCaller Web Server running at: http://localhost:${PORT}`);
+  console.log(`🚀 CallerCraft Web Server running at: http://localhost:${PORT}`);
   console.log(`📱 Access on Android Browser: http://localhost:${PORT} or open index.html directly!`);
 });

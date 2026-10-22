@@ -1,4 +1,4 @@
-const CACHE_NAME = 'craftcaller-v2';
+const CACHE_NAME = 'callercraft-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',

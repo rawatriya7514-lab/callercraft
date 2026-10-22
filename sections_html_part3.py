@@ -17,7 +17,7 @@ TAB_ASSISTANT_HTML = '''
               Autonomous AI Call Screening
             </span>
             <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Never answer another scam call</h2>
-            <p class="text-purple-200 text-xs sm:text-sm mt-1.5 mb-6">When an unknown number rings, CraftCaller AI Assistant answers on your behalf, questions the caller, and transcribes their voice live on your screen.</p>
+            <p class="text-purple-200 text-xs sm:text-sm mt-1.5 mb-6">When an unknown number rings, CallerCraft AI Assistant answers on your behalf, questions the caller, and transcribes their voice live on your screen.</p>
 
             <div class="flex flex-wrap items-center gap-3">
               <button id="start-assistant-demo-btn" class="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-purple-600/30 transition-all flex items-center gap-2 active:scale-95">
@@ -51,7 +51,7 @@ TAB_ASSISTANT_HTML = '''
                   <span class="font-bold text-xs text-slate-900 dark:text-white">Professional Gatekeeper</span>
                   <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
                 </div>
-                <p class="text-[11px] text-slate-500 mt-1">Formal & concise. "Hello, I am CraftCaller Assistant. Who is calling and what is this regarding?"</p>
+                <p class="text-[11px] text-slate-500 mt-1">Formal & concise. "Hello, I am CallerCraft Assistant. Who is calling and what is this regarding?"</p>
               </label>
 
               <label class="assistant-persona-card block p-3 rounded-2xl border-2 border-transparent bg-slate-50 dark:bg-cc-darkBg hover:bg-slate-100 dark:hover:bg-cc-borderDark cursor-pointer transition-all" data-persona="strict">
@@ -131,7 +131,7 @@ TAB_SIMULATOR_HTML = '''
             <svg class="w-7 h-7 text-cc-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             Caller ID Simulator Studio
           </h2>
-          <p class="text-slate-300 text-xs sm:text-sm mt-1 max-w-2xl">Experience how CraftCaller identifies incoming calls in real-time. Test scam alerts, verified couriers, banking agents, and personal contacts with synthetic dual-tone ringtones and responsive overlays.</p>
+          <p class="text-slate-300 text-xs sm:text-sm mt-1 max-w-2xl">Experience how CallerCraft identifies incoming calls in real-time. Test scam alerts, verified couriers, banking agents, and personal contacts with synthetic dual-tone ringtones and responsive overlays.</p>
         </div>
 
         <!-- Presets Grid (7 Real Scenarios) -->
@@ -195,7 +195,7 @@ TAB_SIMULATOR_HTML = '''
                   <p class="text-xs text-slate-500 font-mono">+91 1800 266 7100</p>
                 </div>
               </div>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-3">Certified official toll-free bank line. Caller badge verified by CraftCaller Enterprise.</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-3">Certified official toll-free bank line. Caller badge verified by CallerCraft Enterprise.</p>
             </div>
             <button class="simulate-preset-btn mt-4 w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold text-xs transition-all shadow-sm flex items-center justify-center gap-1.5 active:scale-95"
               data-name="HDFC Priority Banking" data-number="+91 1800 266 7100" data-type="verified" data-category="Banking & Finance" data-reports="0" data-location="All India Toll-Free" data-carrier="Tata Teleservices">
@@ -207,7 +207,7 @@ TAB_SIMULATOR_HTML = '''
           <div class="bg-white dark:bg-cc-cardDark border border-amber-200 dark:border-amber-900/60 rounded-3xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between mb-3">
-                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-400">CraftCaller Gold VIP</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-400">CallerCraft Gold VIP</span>
                 <span class="text-[10px] text-slate-400">100% Safe</span>
               </div>
               <div class="flex items-center gap-3">
@@ -217,7 +217,7 @@ TAB_SIMULATOR_HTML = '''
                   <p class="text-xs text-slate-500 font-mono">+91 98200 12345</p>
                 </div>
               </div>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-3">Personal contact and verified CraftCaller Gold VIP profile holder.</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-3">Personal contact and verified CallerCraft Gold VIP profile holder.</p>
             </div>
             <button class="simulate-preset-btn mt-4 w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-bold text-xs transition-all shadow-sm flex items-center justify-center gap-1.5 active:scale-95"
               data-name="Aarav Sharma" data-number="+91 98200 12345" data-type="gold" data-category="Personal Contact" data-reports="0" data-location="Mumbai, Maharashtra" data-carrier="Jio 5G">
@@ -274,7 +274,7 @@ TAB_SIMULATOR_HTML = '''
         <!-- Custom Call Simulator Form -->
         <div class="bg-white dark:bg-cc-cardDark border border-slate-200 dark:border-cc-borderDark rounded-3xl p-6 shadow-sm">
           <h3 class="font-extrabold text-base text-slate-900 dark:text-white mb-1">Custom Caller Simulator Studio</h3>
-          <p class="text-xs text-slate-500 mb-4">Input any custom phone identity to test how CraftCaller renders it.</p>
+          <p class="text-xs text-slate-500 mb-4">Input any custom phone identity to test how CallerCraft renders it.</p>
           
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <div>
@@ -290,7 +290,7 @@ TAB_SIMULATOR_HTML = '''
               <select id="custom-caller-type" class="w-full px-3 py-2 rounded-xl text-xs sm:text-sm bg-slate-50 dark:bg-cc-darkBg border border-slate-200 dark:border-cc-borderDark text-slate-900 dark:text-white">
                 <option value="spam">🚨 Severe Scam / Fraud</option>
                 <option value="verified">✅ Verified Business</option>
-                <option value="gold">⭐ CraftCaller Gold VIP</option>
+                <option value="gold">⭐ CallerCraft Gold VIP</option>
                 <option value="safe">👤 Safe Contact / Personal</option>
               </select>
             </div>
@@ -423,7 +423,7 @@ TAB_ANALYTICS_HTML = '''
                 <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
                 Backup & Data Portability
               </h3>
-              <p class="text-xs text-slate-500 mt-0.5">Export full CraftCaller contacts, database, and logs to JSON.</p>
+              <p class="text-xs text-slate-500 mt-0.5">Export full CallerCraft contacts, database, and logs to JSON.</p>
             </div>
 
             <div class="mt-6 flex flex-col gap-2.5">

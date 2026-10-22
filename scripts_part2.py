@@ -157,7 +157,7 @@ SCRIPTS_PART2_JS = '''
         return nameMatch || catMatch || numMatch;
       });
 
-      // Deterministic CraftCaller AI Inference for unlisted numbers
+      // Deterministic CallerCraft AI Inference for unlisted numbers
       if (matches.length === 0 && qDigits.length >= 6) {
         const isSpamGuess = qDigits.endsWith('0') || qDigits.startsWith('800') || qDigits.includes('999') || qDigits.startsWith('140');
         let operator = 'Jio Telecom';
@@ -216,7 +216,7 @@ SCRIPTS_PART2_JS = '''
           </span>`;
         } else if (isGold) {
           badgeHtml = `<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400 flex items-center gap-1 border border-amber-300 dark:border-amber-800">
-            👑 CraftCaller Gold VIP
+            👑 CallerCraft Gold VIP
           </span>`;
         } else if (isVerified) {
           badgeHtml = `<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-950/80 text-cc-blue dark:text-blue-400 flex items-center gap-1 border border-blue-200 dark:border-blue-900">
@@ -548,7 +548,7 @@ SCRIPTS_PART2_JS = '''
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `craftcaller_call_logs_${Date.now()}.csv`;
+      a.download = `callercraft_call_logs_${Date.now()}.csv`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -601,7 +601,7 @@ SCRIPTS_PART2_JS = '''
           </div>
         `;
       } else {
-        dialerMatched.innerHTML = `<span class="text-slate-400">CraftCaller Smart ID Ready</span>`;
+        dialerMatched.innerHTML = `<span class="text-slate-400">CallerCraft Smart ID Ready</span>`;
       }
     }
 
