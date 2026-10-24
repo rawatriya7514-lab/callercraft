@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.CraftCaller" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/blue_primary</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Warehouse-blue "C" mark, Truecaller-style but with CraftCaller branding -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M76,40 C72,36.7 66.7,35 61,35 C47,35 37,44 37,54 C37,64 47,73 61,73 C66.7,73 72,71.3 76,68"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"
+        android:strokeWidth="10" />
+</vector>

@@ -8,6 +8,5 @@ ref/truecaller-rea-snapshot
 build/
 m2cache/
 keystore/
-android/
 *.log
 resolve.log
