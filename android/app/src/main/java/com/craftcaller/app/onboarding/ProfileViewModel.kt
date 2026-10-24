@@ -13,6 +13,7 @@ import com.craftcaller.app.util.AvailableVoice
 import com.craftcaller.app.util.Gender
 import com.craftcaller.app.util.Honorific
 import com.craftcaller.app.util.Prefs
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -61,6 +62,7 @@ class ProfileViewModel(app: Application) : AndroidViewModel(app) {
         prefs.honorific != Announcer.defaultHonorific(prefs.gender)
 
     val engineReady: Boolean get() = voiceKit.ready.value
+    val isSpeaking: StateFlow<Boolean> get() = voiceKit.speaking
 
     init {
         voiceKit.voices

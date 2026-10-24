@@ -226,6 +226,11 @@ class VoiceEngineViewModel(app: Application) : AndroidViewModel(app) {
                 }
             }
         }
+        kitJobs += viewModelScope.launch {
+            holder.speaking.collect { isSpeaking ->
+                previewPlaying = isSpeaking
+            }
+        }
     }
 }
 
@@ -234,7 +239,7 @@ private fun discoveredEngines(app: Application): List<TtsEngineOption> = runCatc
     val pm = app.packageManager
     val intent = Intent(TextToSpeech.Engine.INTENT_ACTION_TTS_SERVICE)
         .addCategory(Intent.CATEGORY_DEFAULT)
-    pm.queryIntentActivities(intent, 0).mapNotNull { resolve ->
+    pm.queryIntentServices(intent, 0).mapNotNull { resolve ->
         val pkg = resolve?.serviceInfo?.packageName ?: return@mapNotNull null
         val label = runCatching {
             pm.getApplicationLabel(pm.getApplicationInfo(pkg, 0)).toString()

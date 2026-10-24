@@ -46,6 +46,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -87,11 +88,11 @@ fun OnboardingScreen(onDone: () -> Unit) {
     val context = LocalContext.current
     val vm: ProfileViewModel = rememberVm { ProfileViewModel(context.applicationContext as Application) }
     var step by rememberSaveable { mutableStateOf(Step.WELCOME) }
-    var playing by remember { mutableStateOf(false) }
+    val isSpeaking by vm.isSpeaking.collectAsState()
 
     // Never leak a playing preview across steps.
     DisposableEffect(step) {
-        onDispose { if (playing) { vm.stopPreview(); playing = false } }
+        onDispose { if (isSpeaking) { vm.stopPreview() } }
     }
 
     Column(
@@ -111,10 +112,18 @@ fun OnboardingScreen(onDone: () -> Unit) {
                 Step.WELCOME -> WelcomeStep()
                 Step.NAME -> NameStep(vm)
                 Step.GENDER -> GenderStep(vm)
-                Step.HONORIFIC -> HonorificStep(vm)
-                Step.LANGUAGE -> LanguageStep(vm)
-                Step.VOICE -> VoiceStep(vm, playing = playing, onPlayToggle = { playing = !playing })
-                Step.DONE -> DoneStep(vm, playing = playing, onPlayToggle = { playing = !playing })
+                Step.HONORIFIC -> HonorificStep(vm, playing = isSpeaking, onPlayToggle = {
+                    if (isSpeaking) vm.stopPreview() else vm.previewPersonal()
+                })
+                Step.LANGUAGE -> LanguageStep(vm, playing = isSpeaking, onPlayToggle = {
+                    if (isSpeaking) vm.stopPreview() else vm.previewPersonal()
+                })
+                Step.VOICE -> VoiceStep(vm, playing = isSpeaking, onPlayToggle = {
+                    if (isSpeaking) vm.stopPreview() else vm.previewPersonal()
+                })
+                Step.DONE -> DoneStep(vm, playing = isSpeaking, onPlayToggle = {
+                    if (isSpeaking) vm.stopPreview() else vm.previewPersonal()
+                })
             }
             Spacer(Modifier.height(18.dp))
         }
@@ -124,7 +133,7 @@ fun OnboardingScreen(onDone: () -> Unit) {
             canContinue = step != Step.NAME || vm.name.isNotBlank(),
             onBack = { step = prevStep(step) },
             onContinue = {
-                playing = false
+                if (isSpeaking) vm.stopPreview()
                 if (step == Step.DONE) {
                     vm.save()
                     onDone()
@@ -384,7 +393,11 @@ internal fun GenderStep(vm: ProfileViewModel) {
 }
 
 @Composable
-internal fun HonorificStep(vm: ProfileViewModel) {
+internal fun HonorificStep(
+    vm: ProfileViewModel,
+    playing: Boolean = false,
+    onPlayToggle: () -> Unit = { vm.previewPersonal() }
+) {
     Column(modifier = Modifier.fillMaxWidth()) {
         StepTitle(
             "How should the announcer address you?",
@@ -421,14 +434,19 @@ internal fun HonorificStep(vm: ProfileViewModel) {
             }
         }
         SampleCard(
-            sample = Announcer.personalGreeting(vm.name.trim(), vm.honorific, vm.lang),
-            onPlay = { vm.previewPersonal() }
+            sample = Announcer.personalGreeting(vm.name.trim().ifBlank { "Umesh" }, vm.honorific, vm.lang),
+            playing = playing,
+            onPlay = onPlayToggle
         )
     }
 }
 
 @Composable
-internal fun LanguageStep(vm: ProfileViewModel) {
+internal fun LanguageStep(
+    vm: ProfileViewModel,
+    playing: Boolean = false,
+    onPlayToggle: () -> Unit = { vm.previewPersonal() }
+) {
     Column(modifier = Modifier.fillMaxWidth()) {
         StepTitle("Announcement language", "Also pre-selects the announcer voice language.")
         Spacer(Modifier.height(8.dp))
@@ -462,6 +480,12 @@ internal fun LanguageStep(vm: ProfileViewModel) {
                 Spacer(Modifier.height(10.dp))
             }
         }
+        Spacer(Modifier.height(14.dp))
+        SampleCard(
+            sample = Announcer.personalGreeting(vm.name.trim().ifBlank { "Umesh" }, vm.honorific, vm.lang),
+            playing = playing,
+            onPlay = onPlayToggle
+        )
     }
 }
 
@@ -675,10 +699,10 @@ private fun StepTitle(title: String, subtitle: String) {
 }
 
 @Composable
-private fun SampleCard(sample: String, onPlay: () -> Unit) {
+private fun SampleCard(sample: String, playing: Boolean = false, onPlay: () -> Unit) {
     PlayBar(
         label = sample,
-        playing = false,
+        playing = playing,
         onToggle = onPlay,
         hint = "Sample"
     )
@@ -692,6 +716,7 @@ private fun PlayBar(label: String, playing: Boolean, onToggle: () -> Unit, hint:
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
             .background(MaterialTheme.colorScheme.surface)
+            .clickable(onClick = onToggle)
             .padding(12.dp)
     ) {
         Text(hint, fontSize = 10.sp, color = TextMuted, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)

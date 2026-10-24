@@ -180,5 +180,8 @@ object Announcer {
         honorific: Honorific,
         lang: AnnounceLang,
         callerName: String = SAMPLE_CALLER_NAME
-    ): String = greeting(addressed(rawName, honorific), callerName, lang)
+    ): String {
+        val safeName = rawName.trim().ifBlank { "Umesh" }
+        return greeting(addressed(safeName, honorific), callerName, lang)
+    }
 }

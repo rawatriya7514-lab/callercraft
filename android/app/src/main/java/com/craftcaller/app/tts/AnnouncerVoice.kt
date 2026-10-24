@@ -95,8 +95,15 @@ object AnnouncerVoice : TextToSpeech.OnInitListener {
         pendingText = text
         runCatching {
             // Honor the user-selected TTS engine (Settings → Voice engine & voices);
-            // blank pref = Android system default engine.
-            val enginePackage = Prefs(appCtx!!).ttsEngineName.trim()
+            // defaults to Google Speech Services for natural human WaveNet voices if available.
+            val configuredEngine = Prefs(appCtx!!).ttsEngineName.trim()
+            val enginePackage = if (configuredEngine.isNotBlank()) {
+                configuredEngine
+            } else if (isGoogleTtsInstalled(appCtx!!)) {
+                "com.google.android.tts"
+            } else {
+                ""
+            }
             Log.d(TAG, "creating TextToSpeech engine (engine=${enginePackage.ifBlank { "system-default" }})")
             val created = enginePackage.takeIf { it.isNotBlank() }?.let { pkg ->
                 runCatching { TextToSpeech(appCtx!!, this, pkg) }.getOrNull()
@@ -161,17 +168,15 @@ object AnnouncerVoice : TextToSpeech.OnInitListener {
                 val prefs = Prefs(context)
                 engine.stop()
 
-                // Voice: saved installed voice -> saved language -> engine default.
+                // Voice: saved installed voice -> most natural neural voice -> engine default.
                 val savedVoiceName = prefs.announcerVoiceName
-                val installed = runCatching {
-                    engine.voices.orEmpty().firstOrNull { it.name == savedVoiceName }
-                }.getOrNull()
-                if (installed != null) {
-                    engine.voice = installed
+                val targetLocale = Locale.forLanguageTag(prefs.announcerVoiceLang.ifBlank { "hi-IN" })
+                val bestVoice = selectBestVoice(engine, targetLocale, savedVoiceName.takeIf { it.isNotBlank() })
+                if (bestVoice != null) {
+                    engine.voice = bestVoice
                 } else {
-                    engine.voice = null
-                    engine.language =
-                        Locale.forLanguageTag(prefs.announcerVoiceLang.ifBlank { "hi-IN" })
+                    // NEVER set engine.voice = null (throws NPE on Android)
+                    engine.language = targetLocale
                 }
 
                 engine.setSpeechRate(prefs.announceRate)

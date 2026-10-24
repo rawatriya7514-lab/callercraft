@@ -135,9 +135,9 @@ class Prefs(context: Context) {
         get() = SecurePrefs.float(appCtx, KEY_SECURE_ANNOUNCE_RATE, 1.0f).coerceIn(0.5f, 2.0f)
         set(value) = SecurePrefs.putFloat(appCtx, KEY_SECURE_ANNOUNCE_RATE, value.coerceIn(0.5f, 2.0f))
 
-    /** TTS pitch multiplier (0.5–2.0). */
+    /** TTS pitch multiplier (0.5–2.0). 1.0f is standard natural human pitch. */
     var announcePitch: Float
-        get() = SecurePrefs.float(appCtx, KEY_SECURE_ANNOUNCE_PITCH, 1.1f).coerceIn(0.5f, 2.0f)
+        get() = SecurePrefs.float(appCtx, KEY_SECURE_ANNOUNCE_PITCH, 1.0f).coerceIn(0.5f, 2.0f)
         set(value) = SecurePrefs.putFloat(appCtx, KEY_SECURE_ANNOUNCE_PITCH, value.coerceIn(0.5f, 2.0f))
 
     // ---------------- Audio modes (music/ringtones module) -------------------
